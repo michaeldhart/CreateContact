@@ -197,7 +197,7 @@ $(document).ready(function() {
 
 					if (!$('.add-phone-input-type.selected').length) {
 						$('.add-phone-input-type').eq(0).parent().parent().parent().addClass('has-error');
-						$alert.children('ul').append('<li>Please select a number type</li>');
+						$alert.children('ul').append('<li>Please select a type of number</li>');
 						numberErrors++;
 					} else {
 						$('.add-phone-input-type').eq(0).parent().parent().parent().removeClass('has-error');
