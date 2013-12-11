@@ -1,0 +1,126 @@
+body {
+	background-color: #efefef;
+	color: #333;
+}
+
+header {
+	margin-bottom: 50px;
+}
+
+h1, h2 {
+	font-family: Oxygen;
+	border-bottom: 1px solid #333;
+	margin-bottom: 50px;
+}
+
+h1 {
+	font-size: 48px;
+}
+
+h3 {
+	font-family: Oxygen;
+	margin-bottom: 50px;
+}
+
+.row {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.alert {
+	display: none;
+}
+
+.primary {
+	color: #f0ad4e;
+	&:hover,
+	&:active,
+	&:focus {
+		color: #f0ad4e;
+	}
+}
+
+input[type=file] {
+	display: none;
+}
+
+input[type=phone] {
+	margin-bottom: 25px;
+}
+
+#header-bg {
+	width: 100%;
+	height: 70px;
+	background: #ddd;
+}
+
+#logo {
+	height: 60px;
+	margin-top: 5px;
+}
+
+.container {
+	margin-top: -70px;
+}
+
+#contact-photo {
+	margin-bottom: 25px;
+}
+
+#contact-photo,
+#job-photo,
+#get-gmap {
+	border: 3px solid #fff;
+	box-shadow: 0 0 2px #aaa;
+	cursor: pointer;
+	&:hover {
+		box-shadow: 0 0 6px #aaa;
+	}
+	&:active {
+		box-shadow: 0 0 2px #aaa;
+	}
+}
+
+@media all and (max-width: 760px) {
+	#first-name,
+	#last-name {
+		margin-top: 25px;
+	}
+}
+
+#add-phone-button,
+#add-email-button,
+#add-communication-button,
+#add-note-button {
+	float: right;
+}
+
+#work-phones,
+#cell-phones,
+#home-phones {
+	position: absolute;
+	h3 {
+		display: none;
+	}
+}
+
+#map-canvas {
+	display: none;
+	border: 3px solid #fff;
+	box-shadow: 0 0 2px #aaa;
+}
+
+.communication-row,
+.note-row {
+	border-top: 1px solid #ccc;
+}
+
+.delete-communication,
+.delete-note {
+	margin-top: 5px;
+}
+
+#save-button {
+	margin-top: 50px;
+	float: right;
+}

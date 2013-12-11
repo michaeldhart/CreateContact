@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Create Contact</title>
+
+		<!-- prevent pinch-zoom on mobile devices and set width -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Bootstrap css -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+		<!-- jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+		<!-- Bootstrap js -->
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+		<!-- Google webfont for headings, etc. -->
+		<link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
+
+		<!-- Modernizr -->
+		<script type="text/javascript" src="js/modernizr.js"></script>
+
+		<!-- Custom css/js -->
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<script type="text/javascript" src="js/library.min.js"></script>
+
+		<!-- Google Maps API -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwOoZEoamLyUdKznefem-xAnu0QNGriwE&sensor=false"></script>
+	    <script type="text/javascript" src="js/gmaps.js"></script>
+	</head>
+	<body>
+		<div id="header-bg"></div>
+		<div class="container">
+			<header>
+				<img src="img/logo.png" alt="AccuLynx" id="logo" />
+			</header>
+			<article>
+				<div>
+					<h1>Create Contact</h1>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0">
+						<div>
+							<img id="contact-photo" alt="contact-photo" src="img/addPhotoPlaceholder.png" class="img-responsive img-circle" />
+							<input type="file" id="contact-photo-input" name="CONTACT_PHOTO_INPUT" />
+						</div>
+					</div>
+					<div class="col-sm-8 col-sm-offset-1">
+						<div class="row">
+							<div class="col-sm-3">
+								<select class="form-control" id="contact-salutation" name="CONTACT_SALUTATION">
+									<option>Mr.</option>
+									<option>Mrs.</option>
+									<option>Ms.</option>
+									<option>Dr.</option>
+								</select>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input type="text" id="first-name" name="FIRST_NAME" placeholder="First Name" class="form-control">
+							</div>
+							<div class="col-xs-6 col-sm-5">
+								<input type="text" id="last-name" name="LAST_NAME" placeholder="Last Name" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="company-name" class="control-label">Company Name</label>
+								<input type="text" id="company-name" name="COMPANY_NAME" class="form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="cross-ref-no" class="control-label">Cross Reference #</label>
+								<input type="text" id="cross-ref-no" name="CROSS_REF_NO" class="form-control"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="contact-type" class="control-label">Contact Type</label>
+								<select class="form-control" id="contact-type" name="CONTACT_TYPE">
+									<option>General</option>
+									<option>Agent</option>
+									<option>Claims Officer</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="phones">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Phone</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-4">
+								<div class="row">
+									<div class="col-sm-12">
+										<button class="btn btn-default" id="add-phone-button" data-toggle="modal" data-target="#add-phone-modal"><span class="glyphicon glyphicon-plus"></span> Add Phone</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12" id="work-phones">
+									<h3>Work</h3>
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12" id="cell-phones">
+									<h3>Cell</h3>
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12" id="home-phones">
+									<h3>Home</h3>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="emails">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Email</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-4">
+								<div class="row">
+									<div class="col-sm-12">
+										<button class="btn btn-default" id="add-email-button" data-toggle="modal" data-target="#add-email-modal"><span class="glyphicon glyphicon-plus"></span> Add Email</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12" id="email-list">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="addresses">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Address</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-4">
+								<h3>Mailing</h3>
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="text" id="mailing-address-input" name="MAILING_ADDRESS_INPUT" placeholder="Street Address" class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="text" id="mailing-address-2-input" name="MAILING_ADDRESS_2_INPUT" placeholder="Apt/Suite etc." class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<input type="text" id="mailing-address-city-input" name="MAILING_ADDRESS_CITY_INPUT" placeholder="City" class="form-control" />
+									</div>
+									<div class="col-xs-3">
+										<select class="form-control" id="mailing-address-state-input" name="MAILING_ADDRESS_STATE_INPUT">
+											
+										</select>
+									</div>
+									<div class="col-xs-3">
+										<input type="text" id="mailing-address-zip-input" name="MAILING_ADDRESS_ZIP_INPUT" placeholder="Zip" class="form-control" maxlength="5" />
+									</div>
+								</div>
+								<h3>Billing</h3>
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="text" id="billing-address-input" name="BILLING_ADDRESS_INPUT" placeholder="Street Address" class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="text" id="billing-address-2-input" name="BILLING_ADDRESS_2_INPUT" placeholder="Apt/Suite etc." class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<input type="text" id="billing-address-city-input" name="BILLING_ADDRESS_CITY_INPUT" placeholder="City" class="form-control" />
+									</div>
+									<div class="col-xs-3">
+										<select class="form-control" id="billing-address-state-input" name="BILLING_ADDRESS_STATE_INPUT">
+											
+										</select>
+									</div>
+									<div class="col-xs-3">
+										<input type="text" id="billing-address-zip-input" name="BILLING_ADDRESS_ZIP_INPUT" placeholder="Zip" class="form-control" maxlength="5" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="job-location">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Job Location</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-4">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="alert alert-danger">
+											<strong>Whoa.</strong> Address must contain at least Street and Zip in order to be mapped.
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="text" id="job-address-input" name="JOB_ADDRESS_INPUT" placeholder="Street Address" class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="text" id="job-address-2-input" name="JOB_ADDRESS_2_INPUT" placeholder="Apt/Suite etc." class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<input type="text" id="job-address-city-input" name="JOB_ADDRESS_CITY_INPUT" placeholder="City" class="form-control" />
+									</div>
+									<div class="col-xs-3">
+										<select class="form-control" id="job-address-state-input" name="JOB_ADDRESS_STATE_INPUT">
+											
+										</select>
+									</div>
+									<div class="col-xs-3">
+										<input type="text" id="job-address-zip-input" name="JOB_ADDRESS_ZIP_INPUT" placeholder="Zip" class="form-control" maxlength="5" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<div>
+											<img id="job-photo" alt="job-photo" src="img/addPhotoPlaceholder.png" class="img-responsive img-rounded" />
+											<input type="file" id="job-photo-input" name="JOB_PHOTO_INPUT" />
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<img id="get-gmap" alt="click here to get Google Map" src="img/getGmapPlaceholder.png" class="img-responsive img-rounded" />
+										<div id="map-canvas"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="communications">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Communication History</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-4">
+								<div class="row">
+									<div class="col-sm-12">
+										<button class="btn btn-default" id="add-communication-button"><span class="glyphicon glyphicon-plus"></span> Add Communication</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="notes">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2>Notes</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-4">
+								<div class="row">
+									<div class="col-sm-12">
+										<button class="btn btn-default" id="add-note-button"><span class="glyphicon glyphicon-plus"></span> Add Note</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<button class="btn btn-success btn-large" id="save-button">Create Contact</button>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="modal fade" id="add-phone-modal" role="dialog" aria-labelledby="add-phone-label" aria-hidden="true" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="add-phone-label">Add Phone</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="alert alert-danger">
+									<strong>Oops!</strong> Check the following and try again.
+									<ul>
+									<ul>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-9">
+								<input type="phone" id="add-phone-input" name="ADD_PHONE_INPUT" class="form-control" placeholder="Phone Number" maxlength="14" />
+							</div>
+							<div class="col-sm-3">
+								<input type="text" id="add-phone-ext-input" name="ADD_PHONE_EXT_INPUT" class="form-control" placeholder="Ext.">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label class="control-label">Type</label>
+								<div class="input-group">
+									<div class="btn-group">
+										<button class="btn btn-default add-phone-input-type">Work</button>
+										<button class="btn btn-default add-phone-input-type">Cell</button>
+										<button class="btn btn-default add-phone-input-type">Home</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<br>
+								<input type="checkbox" id="add-phone-primary" name="ADD_PHONE_PRIMARY" />
+								<label for="add-phone-primary">Set as Primary</label>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-success" id="add-phone-save">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="add-email-modal" role="dialog" aria-labelledby="add-email-label" aria-hidden="true" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="add-email-label">Add Email</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="alert alert-danger">
+									<strong>Oops!</strong> Please enter a valid email address.
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<input type="email" id="add-email-input" name="ADD_EMAIL_INPUT" class="form-control" placeholder="Email" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<br>
+								<input type="checkbox" id="add-email-primary" name="ADD_EMAIL_PRIMARY" />
+								<label for="add-email-primary">Set as Primary</label>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-success" id="add-email-save">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
