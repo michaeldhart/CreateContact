@@ -65,6 +65,9 @@ input[type=phone] {
 
 #contact-photo {
 	margin-bottom: 25px;
+	/*fix firefox behavior*/
+	position: relative;
+	z-index: 9999;
 }
 
 #contact-photo,
